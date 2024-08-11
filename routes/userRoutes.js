@@ -95,15 +95,15 @@ const {
   deleteDrsByDrsno
 } = require('../controllers/transaction/drsController');
 
+const {
+  createDeliveryEntry,
+  getDeliveryEntries,
+  getDeliveryEntryByAWBNO,
+  updateDeliveryEntryByAWBNO,
+} = require('../controllers/transaction/deliveryEntryController');
 
-//DeliveryEntry Controller
-// const {
-//   createDeliveryentry,
-//   getDeliveryentry,
-//   getDeliveryentryByawbno,
-//   updateDeliveryentryByawbno,
-//   deleteDeliveryentryByawbno
-// } = require('../controllers/transaction/deliveryEntryController');
+
+
 
 
 
@@ -204,12 +204,13 @@ router.get('/drs/:drsno', getDrsByDrsno);
 router.put('/drs/:drsno', updateDrsByDrsno);
 router.delete('/drs/:drsno', deleteDrsByDrsno);
 
-// Routes for DeliveryEntry
-// router.post('/deliveryentry', createDeliveryentry);
-// router.get('/deliveryentry', getDeliveryentry);
-// router.get('/deliveryentry/:awbno', getDeliveryentryByawbno);
-// router.put('/deliveryentry/:awbno', updateDeliveryentryByawbno);
-// router.delete('/deliveryentry/:awbno', deleteDeliveryentryByawbno);
+// Route to create a new delivery entry
+router.post('/delivery-entries', createDeliveryEntry);
+
+// Route to get all delivery entries
+router.get('/delivery-entries', getDeliveryEntries);
+router.get('/delivery-entries/:AWBNO', getDeliveryEntryByAWBNO);
+router.put('/delivery-entries/:AWBNO', updateDeliveryEntryByAWBNO);
 
 
 //client master 
