@@ -234,24 +234,24 @@ const updateDeliveryEntryByAWBNO = async (req, res) => {
   }
 };
 
-// // Delete a delivery entry by AWBNO
-// const deleteDeliveryEntryByAWBNO = async (req, res) => {
-//   try {
-//     const pool = await connectDatabase();
-//     const { AWBNO } = req.params;
-//     const deleteQuery = 'DELETE FROM dbo.jbl_DATAENTRY WHERE AWBNO = @AWBNO';
-//     await pool.request().input('AWBNO', sql.VarChar, AWBNO).query(deleteQuery);
-//     res.status(200).json({ statusCode: 200, message: 'Delivery entry deleted successfully' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ statusCode: 500, message: 'Error deleting delivery entry', error });
-//   }
-// };
+// Delete a delivery entry by AWBNO
+const deleteDeliveryEntryByAWBNO = async (req, res) => {
+  try {
+    const pool = await connectDatabase();
+    const { AWBNO } = req.params;
+    const deleteQuery = 'DELETE FROM dbo.jbl_DATAENTRY WHERE AWBNO = @AWBNO';
+    await pool.request().input('AWBNO', sql.VarChar, AWBNO).query(deleteQuery);
+    res.status(200).json({ statusCode: 200, message: 'Delivery entry deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ statusCode: 500, message: 'Error deleting delivery entry', error });
+  }
+};
 
 module.exports = {
   createDeliveryEntry,
   getDeliveryEntries,
   getDeliveryEntryByAWBNO,
   updateDeliveryEntryByAWBNO,
-  // deleteDeliveryEntryByAWBNO,
+  deleteDeliveryEntryByAWBNO,
 };

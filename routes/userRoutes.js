@@ -100,6 +100,7 @@ const {
   getDeliveryEntries,
   getDeliveryEntryByAWBNO,
   updateDeliveryEntryByAWBNO,
+  deleteDeliveryEntryByAWBNO,
 } = require('../controllers/transaction/deliveryEntryController');
 
 
@@ -211,6 +212,8 @@ router.post('/delivery-entries', createDeliveryEntry);
 router.get('/delivery-entries', getDeliveryEntries);
 router.get('/delivery-entries/:AWBNO', getDeliveryEntryByAWBNO);
 router.put('/delivery-entries/:AWBNO', updateDeliveryEntryByAWBNO);
+router.delete('/delivery-entries/:AWBNO', deleteDeliveryEntryByAWBNO);
+
 
 
 //client master 
