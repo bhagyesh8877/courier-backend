@@ -198,7 +198,7 @@ router.get('/services/:bmode', getServiceByBmode);
 router.put('/services/:bmode', updateServiceByBmode);
 router.delete('/services/:bmode', deleteServiceByBmode);
 
-// Routes for DRS
+// Routes for DRSs
 router.post('/drs', createDrs);
 router.get('/drs', getDrs);
 router.get('/drs/:drsno', getDrsByDrsno);
