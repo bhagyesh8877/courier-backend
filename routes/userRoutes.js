@@ -104,6 +104,15 @@ const {
 } = require('../controllers/transaction/deliveryEntryController');
 
 
+const {
+  createManifestDetail,
+  getManifestDetails,
+  getManifestDetailByMfno,
+  updateManifestDetailByMfno,
+  deleteManifestDetailByMfno
+} = require('../controllers/transaction/dispatchController');
+
+
 
 
 
@@ -213,6 +222,13 @@ router.get('/delivery-entries', getDeliveryEntries);
 router.get('/delivery-entries/:AWBNO', getDeliveryEntryByAWBNO);
 router.put('/delivery-entries/:AWBNO', updateDeliveryEntryByAWBNO);
 router.delete('/delivery-entries/:AWBNO', deleteDeliveryEntryByAWBNO);
+
+// Routes for Manifest Detail
+router.post('/manifestdetails', createManifestDetail);
+router.get('/manifestdetails', getManifestDetails);
+router.get('/manifestdetails/:mfno', getManifestDetailByMfno);
+router.put('/manifestdetails/:mfno', updateManifestDetailByMfno);
+router.delete('/manifestdetails/:mfno', deleteManifestDetailByMfno);
 
 
 
