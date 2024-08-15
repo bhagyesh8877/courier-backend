@@ -95,8 +95,6 @@ const {
   deleteDrsByDrsno
 } = require('../controllers/transaction/drsController');
 
-const {createClientPickupPoint, deleteClientPickupPoint,createClientDeliveryPoint,deleteClientDeliveryPoint, getClientPickupAddressData, getClientDeliveryAddressData, createFuelMaster, deleteFuelMaster}=require('../controllers/master/client-master/clientMasterController')
-
 
 
 // Routes for statuses
@@ -189,12 +187,29 @@ router.get('/services/:bmode', getServiceByBmode);
 router.put('/services/:bmode', updateServiceByBmode);
 router.delete('/services/:bmode', deleteServiceByBmode);
 
-// Routes for DRS
+// Routes for DRSs
 router.post('/drs', createDrs);
 router.get('/drs', getDrs);
 router.get('/drs/:drsno', getDrsByDrsno);
 router.put('/drs/:drsno', updateDrsByDrsno);
 router.delete('/drs/:drsno', deleteDrsByDrsno);
+
+// Route to create a new delivery entry
+router.post('/delivery-entries', createDeliveryEntry);
+
+// Route to get all delivery entries
+router.get('/delivery-entries', getDeliveryEntries);
+router.get('/delivery-entries/:AWBNO', getDeliveryEntryByAWBNO);
+router.put('/delivery-entries/:AWBNO', updateDeliveryEntryByAWBNO);
+router.delete('/delivery-entries/:AWBNO', deleteDeliveryEntryByAWBNO);
+
+// Routes for Manifest Detail
+router.post('/manifestdetails', createManifestDetail);
+router.get('/manifestdetails', getManifestDetails);
+router.get('/manifestdetails/:mfno', getManifestDetailByMfno);
+router.put('/manifestdetails/:mfno', updateManifestDetailByMfno);
+router.delete('/manifestdetails/:mfno', deleteManifestDetailByMfno);
+
 
 
 //client controller 
