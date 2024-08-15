@@ -95,7 +95,24 @@ const {
   deleteDrsByDrsno
 } = require('../controllers/transaction/drsController');
 
+const {createClientPickupPoint, deleteClientPickupPoint, createClientDeliveryPoint, deleteClientDeliveryPoint, getClientPickupAddressData, getClientDeliveryAddressData, createFuelMaster, deleteFuelMaster}=require('../controllers/master/client-master/clientMasterController')
 
+
+
+const {createDeliveryEntry,
+  getDeliveryEntries,
+  getDeliveryEntryByAWBNO,
+  updateDeliveryEntryByAWBNO,
+  deleteDeliveryEntryByAWBNO}=require('../controllers/transaction/deliveryEntryController')
+  
+
+  const{
+    createManifestDetail,
+  getManifestDetails,
+  getManifestDetailByMfno,
+  updateManifestDetailByMfno,
+  deleteManifestDetailByMfno,
+  }=require('../controllers/transaction/dispatchController')
 
 // Routes for statuses
 router.get('/statuses', getStatuses);
