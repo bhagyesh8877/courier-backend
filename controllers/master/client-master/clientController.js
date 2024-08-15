@@ -1,4 +1,4 @@
-const { connectDatabase } = require('../../config/dbconfig');
+const { connectDatabase } = require('../../../config/dbconfig');
 const sql = require('mssql');
 
 // Create a new client
@@ -80,29 +80,7 @@ const getClients = async (req, res) => {
     res.status(500).json({ statusCode: 500, message: 'Error getting clients', error });
   }
 };
-const getClientPickupAddressData = async (req,res) =>{
-  try {
-    const pool = await connectDatabase();
-    const selectQuery= 'select * from dbo.jbl_conpickupaddress';
-    const result=await pool.request().query(selectQuery);
-    res.status(200).json({ statusCode: 200, clientPickupAddress: result.recordset });
-  }catch(error){
-console.error(error);
-res.status(500).json({ statusCode: 500, message: 'Error getting clients pickup address data', error });
-  }
-}
 
-const getClientDeliveryAddressData = async (req,res) =>{
-  try {
-    const pool = await connectDatabase();
-    const selectQuery= 'select * from dbo.jbl_conpickupaddress';
-    const result=await pool.request().query(selectQuery);
-    res.status(200).json({ statusCode: 200, clientDeliveryAddress: result.recordset });
-  }catch(error){
-console.error(error);
-res.status(500).json({ statusCode: 500, message: 'Error getting clients delivery address data', error });
-  }
-}
  
 // Get a client by CLcode
 const getClientByCLcode = async (req, res) => {
@@ -217,4 +195,4 @@ const deleteClientByCLcode = async (req, res) => {
   }
 };
 
-module.exports = { createClient, getClients, getClientByCLcode, updateClientByCLcode, deleteClientByCLcode,getClientPickupAddressData, getClientDeliveryAddressData };
+module.exports = { createClient, getClients, getClientByCLcode, updateClientByCLcode, deleteClientByCLcode };

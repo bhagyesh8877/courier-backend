@@ -83,8 +83,8 @@ const {
 } = require('../controllers/master/serviceController');
 
 const {
-  createClient, getClients, getClientByCLcode, updateClientByCLcode, deleteClientByCLcode, getClientPickupAddressData, getClientDeliveryAddressData
-} = require('../controllers/master/clientController');
+  createClient, getClients, getClientByCLcode, updateClientByCLcode, deleteClientByCLcode
+} = require('../controllers/master/client-master/clientController');
 
 // DRS Controller
 const {
@@ -94,6 +94,8 @@ const {
   updateDrsByDrsno,
   deleteDrsByDrsno
 } = require('../controllers/transaction/drsController');
+
+const {createClientPickupPoint, deleteClientPickupPoint,createClientDeliveryPoint,deleteClientDeliveryPoint, getClientPickupAddressData, getClientDeliveryAddressData, createFuelMaster, deleteFuelMaster}=require('../controllers/master/client-master/clientMasterController')
 
 
 
@@ -195,10 +197,23 @@ router.put('/drs/:drsno', updateDrsByDrsno);
 router.delete('/drs/:drsno', deleteDrsByDrsno);
 
 
-//client master 
+//client controller 
 
 router.get('/clients',getClients);
+router.post('/clients',createClient);
+router.get('/clients/:CLcode', getClientByCLcode);
+router.post('/clients/:clcode',updateClientByCLcode);
+router.delete('/clients/:clcode',deleteClientByCLcode);
+
+
+//client master controller
 router.get('/client-pickup-data',getClientPickupAddressData);
 router.get('/client-delivery-data',getClientDeliveryAddressData);
+router.post('/client-pickup-point',createClientPickupPoint);
+router.delete('/client-pickup-point/:clcode',deleteClientPickupPoint);
+router.post('/client-delivery-point',createClientDeliveryPoint);
+router.delete('/client-delivery-point/:clcode',deleteClientDeliveryPoint);
+router.post('/fuel-master',createFuelMaster);
+router.delete('/fuel-master/:clcode',deleteFuelMaster)
 
 module.exports = router;
